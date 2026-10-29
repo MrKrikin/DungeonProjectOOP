@@ -12,8 +12,18 @@ public class Room {
         this.tiles = new Tile[width][height];
         initFloorRoom();
         initBorderWallsRoom();
+        initColumns();
     }
-
+    private void addColumn(int x, int y) {
+        if (!inBounds(x, y)) return;
+        tiles[x][y] = new ColumnTile(x, y);
+    }
+    private void initColumns() {
+        addColumn(3, 2);
+        addColumn(11, 2);
+        addColumn(3, 8);
+        addColumn(11, 8);
+    }
     private void initFloorRoom() {
         for (int x = 0; x < width; x++) {
             for (int y = 0; y < height; y++) {
@@ -69,4 +79,5 @@ public class Room {
 
     public int getWidth()  { return width; }
     public int getHeight() { return height; }
+
 }
